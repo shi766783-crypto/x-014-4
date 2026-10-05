@@ -19,10 +19,14 @@ export const config = {
 export const seed = {
   documents: [
     { id: 'doc-1', name: '林小满身份证', category: '身份类', holder: '林小满', number: '110***********', issued: '2023-01-18', expires: '2033-01-18', issuer: '杭州市公安局', location: '保险柜 · A-02', copyLocation: '家庭云盘 / 身份证', notes: '正反面已扫描' },
-    { id: 'doc-2', name: '家庭医疗保险合同', category: '医疗类', holder: '林家', number: 'POL-2026-019', issued: '2026-01-01', expires: '2026-11-20', issuer: '安和保险', location: '书房文件盒', copyLocation: '云盘 / 保单', notes: '续保前确认受益人' },
+    { id: 'doc-2', name: '家庭医疗保险合同', category: '医疗类', holder: '林家', number: 'POL-2026-019', issued: '2026-01-01', expires: '2026-11-20', issuer: '安和保险', location: '书房文件盒', copyLocation: '云盘 / 保单', notes: '续保前确认受益人', linkedPolicyId: 'pol-1' },
     { id: 'doc-3', name: '周末房产合同', category: '资产类', holder: '林小满', number: 'PROP-0081', issued: '2024-06-12', expires: '2026-08-10', issuer: '杭城置业', location: '主卧抽屉', copyLocation: '云盘 / 房产', notes: '已过期的合同提醒仅供归档' },
+    { id: 'doc-4', name: '林小满重疾险合同', category: '医疗类', holder: '林小满', number: 'POL-2025-114', issued: '2025-07-01', expires: '2027-06-30', issuer: '康宁人寿', location: '书房文件盒', copyLocation: '云盘 / 保单', notes: '每年 6 月续保提醒' },
   ],
   usages: [{ id: 'use-1', documentId: 'doc-1', date: '2026-09-16', purpose: '办理银行业务', borrower: '林小满', status: '借用中', note: '周五归还' }, { id: 'use-2', documentId: 'doc-2', date: '2026-08-11', purpose: '理赔资料', borrower: '林小满', status: '已归还', note: '' }],
-  policies: [{ id: 'pol-1', company: '安和保险', type: '家庭医疗险', number: 'AH-33001', insured: '林家', expires: '2026-11-20', premium: 2890, payment: '年缴' }],
+  policies: [
+    { id: 'pol-1', company: '安和保险', type: '家庭医疗险', number: 'AH-33001', insured: '林家', expires: '2026-11-20', amount: 2890, payment: '年缴', linkedDocumentId: 'doc-2' },
+    { id: 'pol-2', company: '康宁人寿', type: '重疾险', number: 'KN-2025-114', insured: '林小满', expires: '2027-06-30', amount: 5600, payment: '年缴' },
+  ],
 }
 export { days }
